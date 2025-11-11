@@ -3,7 +3,7 @@
 
 What we'll get when it's done: a plugin that count portals in hackrange of a DrawTools polyline.
 
-![Screenshot](/images/final.png)
+![Screenshot](../images/final.png)
 
 # What you need to start:
 - [node](https://nodejs.org)
