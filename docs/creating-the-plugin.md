@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 1. Creating the plugin
+# 1. Creating the Plugin
 
 - create a directory for your project (countPortals)
 - open a terminal window and run:  
