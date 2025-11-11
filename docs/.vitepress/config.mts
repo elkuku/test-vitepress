@@ -2,36 +2,31 @@ import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: "KuKu's first TEST",
-    description: "This is just a test..",
+    title: "IITC PluginKit Tutorial",
+    description: "This is a tutorial for the IITC PluginKit",
     base: '/test-vitepress/',
     ignoreDeadLinks: [
-        // ignore exact url "/playground"
-        //    '/playground',
-        // ignore all localhost links
         /^https?:\/\/localhost/,
-        // ignore all links include "/repl/""
-        //  /\/repl\//,
-        // custom function, ignore all links include "ignore"
-        //  (url) => {
-        //    return url.toLowerCase().includes('ignore')
-        // }
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
-            {text: 'Home', link: '/'},
-            {text: 'Examples', link: '/markdown-examples'}
+//            {text: 'Home', link: '/'},
+//            {text: 'Examples', link: '/markdown-examples'}
         ],
 
         sidebar: [
             {
                 text: 'Tutorial',
                 items: [
-                    {text: 'Markdown Examples', link: '/markdown-examples'},
                     {text: '1. Creating the Plugin', link: '/creating-the-plugin'},
+                    {text: '2. Starting Buttons', link: '/starting-buttons'},
+                    {text: '3. The Calculation', link: '/the-calculation'},
                     {text: '4. The Dialog', link: '/the-dialog'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
+                    {text: '5. Map Icons', link: '/map-icons'},
+                    {text: '6. Hooks', link: '/hooks'},
+                    {text: '7. Release', link: '/release'},
+                    {text: '8. Debugging', link: '/debugging'}
                 ]
             }
         ],
