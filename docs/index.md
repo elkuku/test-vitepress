@@ -1,25 +1,15 @@
----
-# https://vitepress.dev/reference/default-theme-home-page
-layout: home
 
-hero:
-  name: "KuKu's first TEST"
-  text: "This is just a test.."
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+# Tutorial - CountPortals
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
----
+What we'll get when it's done: a plugin that count portals in hackrange of a DrawTools polyline.
 
+![Screenshot](/images/final.png)
+
+# What you need to start:
+- [node](https://nodejs.org)
+- [yarn](https://yarnpkg.com)
+- a text editor - everyone will do. I recommend: [vs-code](https://code.visualstudio.com)
+- an ingress account, iitc, a browser,....  if you don't know what I'm talking about, you're in the wrong place anyway
+- for adv. users: git for source code management
+
+Not required but helpful: knowledge of: HTML, CSS/postCSS, JQuery, Leaflet, Typescript or Javascript.

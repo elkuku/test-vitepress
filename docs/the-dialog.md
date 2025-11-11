@@ -1,3 +1,5 @@
+# 4. The Dialog
+
 A simple `alert` dialog is fine for a quick message. If we want to provide better user experience we should use a better approach: a real dialog
 
 ```typescript
@@ -36,11 +38,11 @@ doCount(): void {
 We created a table with more details of the found portals.
 
 ### Portal-Data - side story
-Many plugins use portal data and so we should take a deeper look.
+Many plugins use portal data, and so we should take a deeper look.
 
 All portals are stored in the window.portals object with the GUID as key. It includes all visible portals plus some outside of your view.
 
-These portal uses the IITC.Portals format. In fact these are Leaflet markers with more data stored in `options`. And to increase confusions this has a another sub-structure `data` which hold more detail information about the portal. 
+These portal uses the IITC.Portals format. In fact these are Leaflet markers with more data stored in `options`. And to increase confusions this has another sub-structure `data` which hold more detail information about the portal. 
 
 There is even another data-structure `ent` but this one we shouldn't touch. IITC has already processed this raw-data.
 
@@ -72,7 +74,7 @@ Without the leaflet stuff:
 }
 ```
 
-This is the data you'll get for all portals on the map. Portal-Detail data are handled separatly.
+This is the data you'll get for all portals on the map. Portal-Detail data are handled separately.
 
 Be aware that Portals in 'Link-Zoom' have no data. They not even exists. IITC creates dummy-portals at the end of links. They only contain Position, GUID and Faction. So before processing check if data is available - like check if name is present.
 
@@ -82,13 +84,12 @@ First we count portals by each faction (portal.options.team). Then count these b
 
 All the <> stuff is for creating a html-table stored as HTML-String in `contents`. 
 
-At last we have to create the dialog by using IITC dialog helper. It's a IITC-wrapper for JQuery Dialogs.
-This is the function you'll use alot for your dialogs. 
+At last, we have to create the dialog by using IITC dialog helper. It's a IITC-wrapper for JQuery Dialogs.
+This is the function you'll use a lot for your dialogs. 
 
 Because we gave it an ID IITC will make sure that only one of our dialog is open at the same time.
 
-
-The table itself looks really boring. Lets add some CSS styling:
+The table itself looks really boring. Let's add some CSS styling:
 
 ```typescript
 let contents = "<table class='countTable'>"
@@ -135,5 +136,5 @@ What we did here:
 - evey odd row uses a different background color
 - added a special row (class "sep") as a separator
 
-Instead of constructing this in a HTML-String we could have use JQuery of plain 'createElement's. 
+Instead of constructing this in an HTML-String we could have use JQuery of plain 'createElement's. 
 I usually start with a quick HTML-String and then rewrite these in JQuery to ease event handling. But that's up to you.
