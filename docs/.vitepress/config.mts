@@ -4,6 +4,7 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
     title: "KuKu's first TEST",
     description: "This is just a test..",
+    base: '/test-vitepress/',
     ignoreDeadLinks: [
         // ignore exact url "/playground"
         //    '/playground',
