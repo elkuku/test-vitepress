@@ -3,7 +3,7 @@
 Expect the unexpected: the function `init()` is called on startup.  
 So put there all the stuff you want to run on start.
 
-# Toolbutton
+## Toolbutton
 Having the alert text popping up on every start is really annoying. Let's hide it behind a toolbox button - a link below the portal-detail view. Where most plugin will add a link:
 
 :::code-group
@@ -32,9 +32,9 @@ The "$" is JQuery. JQuery is a good old google framework helping us doing html s
 
 Here we create an `<a>` tag and add a "click" handler. This will call our new function which will hold our old `alert`.
 
-![Hello world!](../images/tut-2.png)
+![Hello world!](/images/tut-2.png)
 
-# Toolbar Button
+## Toolbar Button
 Some people prefer a quick access button on the left side of the map. Please think twice before adding it. Only use it for stuff that a user will use daily.
 But hey, this is a tutorial: let's do it
 
@@ -86,7 +86,7 @@ Finally attached them to the global map container.
 Make sure your "autobuild" command is still running. Open _**localhost:8100**_, update your script and reload iitc.
 As you see you'll need these often. It's a good thing to keep localhost and iitc open in different tabs.
 
-# CSS
+## CSS
 Let keep our code clean and move the styles thing into another file. We already have a so far unused file for it:
 
 :::code-group
@@ -99,7 +99,7 @@ Let keep our code clean and move the styles thing into another file. We already 
 :::
 
 :::code-group
-```javascript [Main.ts]
+```typescript [Main.ts]
 const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
     .append(
         $("<a>", {
@@ -113,9 +113,12 @@ const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
 You will see an error message in your terminal window because the icon import is no longer required in Main.ts.
 So remove this import line.
 
-Last but not least let's do a little cleanup and move our stuff to an extra function to keep the "init" function easy to read:
+## Refactoring
 
-```typescript
+Last but not least let's do a little cleanup and move our stuff to an extra function to keep the `init()` function easy to read:
+
+:::code-group
+```typescript [Main.ts]
 init(): void {
     console.log("CountPortals " + VERSION);
 
@@ -146,6 +149,7 @@ private createButtons(): void {
     parent.append(toolbarGroup);
 }
 ```
+:::
 
 The "private" will let the compile know no one else will use this function. You can mark most of your functions private.
 It won't help in final javascript but will help you track down obsolete functions. 

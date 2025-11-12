@@ -35,7 +35,7 @@ something like:
 - Open [http://localhost:8100](http://localhost:8100) and install your freshly created Plugin.
   Open or reload your iitc browser window.
 
-![Browser window](../images/tut-1.png)
+![Browser window](/images/tut-1.png)
 
 You should see the good old "Hello World" message.
 

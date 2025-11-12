@@ -1,10 +1,12 @@
 import {defineConfig} from 'vitepress'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+    base: isProd ? '/test-vitepress/' : '/',
     title: "IITC PluginKit Tutorial",
     description: "This is a tutorial for the IITC PluginKit",
-    base: '/test-vitepress/',
     ignoreDeadLinks: [
         /^https?:\/\/localhost/,
     ],
@@ -19,14 +21,14 @@ export default defineConfig({
             {
                 text: 'Tutorial',
                 items: [
-                    {text: '1. Creating the Plugin', link: '/creating-the-plugin'},
-                    {text: '2. Starting Buttons', link: '/starting-buttons'},
-                    {text: '3. The Calculation', link: '/the-calculation'},
-                    {text: '4. The Dialog', link: '/the-dialog'},
-                    {text: '5. Map Icons', link: '/map-icons'},
-                    {text: '6. Hooks', link: '/hooks'},
-                    {text: '7. Release', link: '/release'},
-                    {text: '8. Debugging', link: '/debugging'}
+                    {text: '1. Creating the Plugin', link: '/1-creating-the-plugin'},
+                    {text: '2. Starting Buttons', link: '/2-starting-buttons'},
+                    {text: '3. The Calculation', link: '/3-the-calculation'},
+                    {text: '4. The Dialog', link: '/4-the-dialog'},
+                    {text: '5. Map Icons', link: '/5-map-icons'},
+                    {text: '6. Hooks', link: '/6-hooks'},
+                    {text: '7. Release', link: '/7-release'},
+                    {text: '8. Debugging', link: '/8-debugging'}
                 ]
             }
         ],
