@@ -6,7 +6,8 @@ So put there all the stuff you want to run on start.
 # Toolbutton
 Having the alert text popping up on every start is really annoying. Let's hide it behind a toolbox button - a link below the portal-detail view. Where most plugin will add a link:
 
-```javascript
+:::code-group
+```typescript [src/Main.ts]
 init(): void {
     console.log("CountPortals " + VERSION);
 
@@ -25,6 +26,7 @@ doCount(): void {
     alert("Hello World");
 }
 ```
+:::
 
 The "$" is JQuery. JQuery is a good old google framework helping us doing html stuff. Modern developers will tell you not to use it. And yes, they are right and wrong. Anyway, it's already included in IITC so let's make use of it to ease HTML creations. 
 
@@ -85,18 +87,19 @@ Make sure your "autobuild" command is still running. Open _**localhost:8100**_, 
 As you see you'll need these often. It's a good thing to keep localhost and iitc open in different tabs.
 
 # CSS
-Let keep our code clean and move the styles thing into another file. We already have a -sofar unused- file for it: style.css
+Let keep our code clean and move the styles thing into another file. We already have a so far unused file for it:
 
-styles.css:
-```css
+:::code-group
+```css [styles.css]
 .mybutton {
    background-image: url("./icon.svg");
    background-size: 24px;
 }
 ```
+:::
 
-Main.ts (Line 19:):
-```javascript
+:::code-group
+```javascript [Main.ts]
 const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
     .append(
         $("<a>", {
@@ -105,6 +108,7 @@ const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
         })
     );
 ```
+:::
 
 You will see an error message in your terminal window because the icon import is no longer required in Main.ts.
 So remove this import line.
