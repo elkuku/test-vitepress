@@ -108,16 +108,14 @@ But it safes a bunch of calculation stuff and most people won't hardly ever reco
 "closedPoint" calculates the point on the line a to b which is closest to x. 
 "distance2" returns the squared 2d-distance between two points.
 
-
 One last thing: lets replace the constant "40" in findHackablePortals with a more descripting word.
 
 ```typescript
 if (closestPoint && position.distanceTo(closestPoint) <= HACK_RANGE) 
 ```
-
 and place the definition at the top of the file:
 
-```typescript
+```typescript {3}
 import * as Plugin from "iitcpluginkit";
 
 const HACK_RANGE = 40;

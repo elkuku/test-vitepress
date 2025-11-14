@@ -4,7 +4,7 @@ Next we want to mark these portals on the map.
 
 Leaflet is the underlaying library for all the drawing stuff. All visible items are based on 'L.Layer'.
 A LayerGroup will be our container for all our things.
-```typescript
+```typescript {12,13}
 class CountPortals implements Plugin.Class {
 
     private layer: L.LayerGroup<any>;

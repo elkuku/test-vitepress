@@ -4,10 +4,10 @@ Expect the unexpected: the function `init()` is called on startup.
 So put there all the stuff you want to run on start.
 
 ## Toolbutton
-Having the alert text popping up on every start is really annoying. Let's hide it behind a toolbox button - a link below the portal-detail view. Where most plugin will add a link:
+Having the alert text popping up on every start is really annoying. Let's hide it behind a toolbox button - a link below the portal-detail view. Where most plugins will add a link:
 
 :::code-group
-```typescript [src/Main.ts]
+```typescript {6-11,14-16} [src/Main.ts]
 init(): void {
     console.log("CountPortals " + VERSION);
 
@@ -21,14 +21,13 @@ init(): void {
     )
 }
 
-
 doCount(): void {
     alert("Hello World");
 }
 ```
 :::
 
-The "$" is JQuery. JQuery is a good old google framework helping us doing html stuff. Modern developers will tell you not to use it. And yes, they are right and wrong. Anyway, it's already included in IITC so let's make use of it to ease HTML creations. 
+The `$` is JQuery. JQuery is a good old google framework helping us doing html stuff. Modern developers will tell you not to use it. And yes, they are right and wrong. Anyway, it's already included in IITC so let's make use of it to ease HTML creations. 
 
 Here we create an `<a>` tag and add a "click" handler. This will call our new function which will hold our old `alert`.
 
@@ -42,7 +41,7 @@ But hey, this is a tutorial: let's do it
 Here we use SVG because it's simple and small, but you're free to use any web-format you like.
 - Import it at the top of your Main.ts:
 
-```typescript
+```typescript {2}
 import * as Plugin from "iitcpluginkit";
 import myicon from "./icon.svg";
 
@@ -52,7 +51,7 @@ class CountPortals implements Plugin.Class {
 
 - Then create the toolbar button.
 
-```typescript
+```typescript {13-23}
 init(): void {
     console.log("CountPortals " + VERSION);
 
@@ -64,7 +63,6 @@ init(): void {
             click: () => this.doCount()
         })
     )
-
 
     const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
         .append(
@@ -87,7 +85,7 @@ Make sure your "autobuild" command is still running. Open _**localhost:8100**_, 
 As you see you'll need these often. It's a good thing to keep localhost and iitc open in different tabs.
 
 ## CSS
-Let keep our code clean and move the styles thing into another file. We already have a so far unused file for it:
+Let's keep our code clean and move the styles into another file. We already have one which is still empty: `styles.css`
 
 :::code-group
 ```css [styles.css]
@@ -99,7 +97,7 @@ Let keep our code clean and move the styles thing into another file. We already 
 :::
 
 :::code-group
-```typescript [Main.ts]
+```typescript {4} [Main.ts]
 const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
     .append(
         $("<a>", {
@@ -110,15 +108,26 @@ const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
 ```
 :::
 
-You will see an error message in your terminal window because the icon import is no longer required in Main.ts.
+You will see an error message in your terminal window because the icon import is no longer required in `Main.ts`.
 So remove this import line.
+
+:::code-group
+```typescript [Main.ts]
+import * as Plugin from "iitcpluginkit";
+import myicon from "./icon.svg"; // [!code error]
+
+class CountPortals implements Plugin.Class {
+// ...
+}
+```
+:::
 
 ## Refactoring
 
 Last but not least let's do a little cleanup and move our stuff to an extra function to keep the `init()` function easy to read:
 
 :::code-group
-```typescript [Main.ts]
+```typescript {6,9-99} [Main.ts]
 init(): void {
     console.log("CountPortals " + VERSION);
 
@@ -126,7 +135,6 @@ init(): void {
 
     this.createButtons();
 }
-
 
 private createButtons(): void {
     $("#toolbox").append(

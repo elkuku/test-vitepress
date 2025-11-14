@@ -91,7 +91,7 @@ Because we gave it an ID IITC will make sure that only one of our dialog is open
 
 The table itself looks really boring. Let's add some CSS styling:
 
-```typescript
+```typescript {1,4,11}
 let contents = "<table class='countTable'>"
 contents += `<tr><td>Total:</td><td>${portals.length}</td></tr>`;
 
