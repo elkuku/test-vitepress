@@ -1,10 +1,11 @@
 import {defineConfig} from 'vitepress'
 
 const isProd = process.env.NODE_ENV === 'production'
+const prodBase = '/test-vitepress/'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    base: isProd ? '/test-vitepress/' : '/',
+    base: isProd ? prodBase : '/',
     title: "IITC PluginKit Tutorial",
     description: "This is a tutorial for the IITC PluginKit",
     lastUpdated: true,
@@ -12,7 +13,7 @@ export default defineConfig({
         /^https?:\/\/localhost/,
     ],
     // put favicon.ico in public directory, if base is set, use /base/favicon.ico
-    head: [['link', { rel: 'icon', href: '/base/favicon.ico' }]],
+    head: [['link', { rel: 'icon', href: isProd ? prodBase + 'test-vitepress/favicon.ico' : '/favicon.ico' }]],
 
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
