@@ -7,6 +7,7 @@ export default defineConfig({
     base: isProd ? '/test-vitepress/' : '/',
     title: "IITC PluginKit Tutorial",
     description: "This is a tutorial for the IITC PluginKit",
+    lastUpdated: true,
     ignoreDeadLinks: [
         /^https?:\/\/localhost/,
     ],
