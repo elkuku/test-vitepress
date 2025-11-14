@@ -12,7 +12,6 @@ export default defineConfig({
     ignoreDeadLinks: [
         /^https?:\/\/localhost/,
     ],
-    // put favicon.ico in public directory, if base is set, use /base/favicon.ico
     head: [['link', { rel: 'icon', href: isProd ? prodBase + 'favicon.ico' : '/favicon.ico' }]],
 
     themeConfig: {
