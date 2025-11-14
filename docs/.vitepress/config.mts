@@ -13,7 +13,7 @@ export default defineConfig({
         /^https?:\/\/localhost/,
     ],
     // put favicon.ico in public directory, if base is set, use /base/favicon.ico
-    head: [['link', { rel: 'icon', href: isProd ? prodBase + 'test-vitepress/favicon.ico' : '/favicon.ico' }]],
+    head: [['link', { rel: 'icon', href: isProd ? prodBase + 'favicon.ico' : '/favicon.ico' }]],
 
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
