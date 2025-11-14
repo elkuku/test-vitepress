@@ -11,6 +11,9 @@ export default defineConfig({
     ignoreDeadLinks: [
         /^https?:\/\/localhost/,
     ],
+    // put favicon.ico in public directory, if base is set, use /base/favicon.ico
+    head: [['link', { rel: 'icon', href: '/base/favicon.ico' }]],
+
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
