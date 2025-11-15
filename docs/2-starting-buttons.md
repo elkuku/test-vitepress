@@ -7,22 +7,24 @@ So put there all the stuff you want to run on start.
 Having the alert text popping up on every start is really annoying. Let's hide it behind a toolbox button - a link below the portal-detail view. Where most plugins will add a link:
 
 :::code-group
-```typescript {6-11,14-16} [src/Main.ts]
-init(): void {
-    console.log("CountPortals " + VERSION);
+```typescript {7-12,15-17} [src/Main.ts]
+class CountPortals implements Plugin.Class {
+    init(): void {
+        console.log("CountPortals " + VERSION);
 
-    require("./styles.css");
+        require("./styles.css");
 
-    $("#toolbox").append(
-        $("<a>", {
-            text: "Count",
-            click: () => this.doCount()
-        })
-    )
-}
+        $("#toolbox").append(
+            $("<a>", {
+                text: "Count",
+                click: () => this.doCount()
+            })
+        )
+    }
 
-doCount(): void {
-    alert("Hello World");
+    doCount(): void {
+        alert("Hello World");
+    }
 }
 ```
 :::
@@ -41,40 +43,44 @@ But hey, this is a tutorial: let's do it
 Here we use SVG because it's simple and small, but you're free to use any web-format you like.
 - Import it at the top of your Main.ts:
 
-```typescript {2}
+```typescript {3}
 import * as Plugin from "iitcpluginkit";
+
 import myicon from "./icon.svg";
 
 class CountPortals implements Plugin.Class {
 // ...
+}
 ```
 
 - Then create the toolbar button.
 
-```typescript {13-23}
-init(): void {
-    console.log("CountPortals " + VERSION);
+```typescript {14-24}
+class CountPortals implements Plugin.Class {
+    init(): void {
+        console.log("CountPortals " + VERSION);
 
-    require("./styles.css");
+        require("./styles.css");
 
-    $("#toolbox").append(
-        $("<a>", {
-            text: "Count",
-            click: () => this.doCount()
-        })
-    )
+        $("#toolbox").append(
+            $("<a>", {
+                text: "Count",
+                click: () => this.doCount()
+            })
+        )
 
-    const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
-        .append(
-            $("<a>")
-                .addClass("leaflet-bar-part")
-                .css("background-image", 'url("' + myicon + '")')
-                .css("background-size", "24px")
-                .click(() => this.doCount())
-        );
+        const toolbarGroup = $("<div>", {class: "leaflet-bar leaflet-control"})
+            .append(
+                $("<a>")
+                    .addClass("leaflet-bar-part")
+                    .css("background-image", 'url("' + myicon + '")')
+                    .css("background-size", "24px")
+                    .click(() => this.doCount())
+            );
 
-    const parent = $(".leaflet-top.leaflet-left", window.map.getContainer()).first();
-    parent.append(toolbarGroup);
+        const parent = $(".leaflet-top.leaflet-left", window.map.getContainer()).first();
+        parent.append(toolbarGroup);
+    }
 }
 ```
 
@@ -97,7 +103,7 @@ Let's keep our code clean and move the styles into another file. We already have
 :::
 
 :::code-group
-```typescript {4} [Main.ts]
+```typescript {3-6} [Main.ts]
 const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
     .append(
         $("<a>", {
@@ -114,6 +120,7 @@ So remove this import line.
 :::code-group
 ```typescript [Main.ts]
 import * as Plugin from "iitcpluginkit";
+
 import myicon from "./icon.svg"; // [!code error]
 
 class CountPortals implements Plugin.Class {
@@ -127,37 +134,38 @@ class CountPortals implements Plugin.Class {
 Last but not least let's do a little cleanup and move our stuff to an extra function to keep the `init()` function easy to read:
 
 :::code-group
-```typescript {6,9-99} [Main.ts]
-init(): void {
-    console.log("CountPortals " + VERSION);
+```typescript {7,10-28} [Main.ts]
+class CountPortals implements Plugin.Class {
+    init(): void {
+        console.log("CountPortals " + VERSION);
 
-    require("./styles.css");
+        require("./styles.css");
 
-    this.createButtons();
-}
+        this.createButtons();
+    }
 
-private createButtons(): void {
-    $("#toolbox").append(
-        $("<a>", {
-            text: "Count",
-            click: () => this.doCount()
-        })
-    )
-
-
-    const toolbarGroup = $("<div>", { class: "leaflet-bar leaflet-control" })
-        .append(
+    private createButtons(): void {
+        $("#toolbox").append(
             $("<a>", {
-                class: "mybutton leaflet-bar-part",
+                text: "Count",
                 click: () => this.doCount()
             })
-        );
+        )
 
-    const parent = $(".leaflet-top.leaflet-left", window.map.getContainer());
-    parent.append(toolbarGroup);
+        const toolbarGroup = $("<div>", {class: "leaflet-bar leaflet-control"})
+            .append(
+                $("<a>", {
+                    class: "mybutton leaflet-bar-part",
+                    click: () => this.doCount()
+                })
+            );
+
+        const parent = $(".leaflet-top.leaflet-left", window.map.getContainer());
+        parent.append(toolbarGroup);
+    }
 }
 ```
 :::
 
-The "private" will let the compile know no one else will use this function. You can mark most of your functions private.
+The `private` will let the compiler know no one else will use this function. You can mark most of your functions private.
 It won't help in final javascript but will help you track down obsolete functions. 

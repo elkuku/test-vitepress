@@ -4,7 +4,7 @@ outline: deep
 
 # 1. Creating the Plugin
 
-Create a directory for your project, something like `countPortals` and move into it.
+Create a directory for your project, something like `countPortals`, and move into it.
 
 ## Install the Plugin Kit
 
